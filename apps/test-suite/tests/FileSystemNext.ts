@@ -309,5 +309,16 @@ export async function test({ describe, expect, it, ...t }) {
         expect(file.md5).toBe('3e25960a79dbc69b674cd4ec67a72c62');
       });
     });
+
+    describe('Lists directory contents', () => {
+      it('for newly created directories', () => {
+        new File(testDirectory + 'file.txt').create();
+        new Directory(testDirectory + 'directory').create();
+        expect(new Directory(testDirectory).list()).toEqual([
+          new File(testDirectory + 'file.txt'),
+          new Directory(testDirectory + 'directory'),
+        ]);
+      });
+    });
   });
 }
