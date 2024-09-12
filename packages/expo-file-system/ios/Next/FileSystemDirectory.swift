@@ -20,9 +20,9 @@ internal final class FileSystemDirectory: FileSystemPath {
     var contents: [[String: Any]] = []
 
     let items = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
-      for item in items {
-        contents.append(["isDirectory": item.hasDirectoryPath, "path": item.absoluteString])
-      }
+    for item in items {
+      contents.append(["isDirectory": item.hasDirectoryPath, "path": item.absoluteString])
+    }
     return contents
   }
   func validatePath() throws {
